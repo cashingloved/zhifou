@@ -1,9 +1,5 @@
-## Laravel-Zhihu
+## 前言 Laravel-Zhihu
 基于**Laravel5.3** 开发
-
-## 前言
-基于 [laravist](https://www.laravist.com/)社区知乎系列项目
-后台模板采用 [AdminLTE-For_Laravel](https://github.com/GeekGhc/adminLTE-for-laravel)
 
 ## 功能
 
@@ -59,7 +55,7 @@
 > 前台部分为1.0版本 前后台为2.0版本
 
 ### 1.克隆源码到本地
-> git clone https://github.com/GeekGhc/zhihu-app
+> git clone https://github.com/cashingloved/zhihu-app.git
 
 ### 2.进入项目目录
 > cd zhihu-app
