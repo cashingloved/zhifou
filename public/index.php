@@ -1,8 +1,7 @@
 <?php
-
 /**
  * Laravel - A PHP Framework For Web Artisans
- *
+ * @version  5.3.31
  * @package  Laravel
  * @author   Taylor Otwell <taylor@laravel.com>
  */
@@ -46,6 +45,7 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 | and wonderful application we have prepared for them.
 |
 */
+
 
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 

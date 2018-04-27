@@ -53,11 +53,12 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="ask-question"><a class="ui button blue" href="/questions/create"><i class="fa fa-paint-brush fa-icon-lg"></i>写问题</a></li>
-                    <!-- Authentication Links -->
                     @if (Auth::guest())
+                        <!-- 未登录 -->
                         <li><a class="nav-li-login" href="{{ url('/login') }}">登 录</a></li>
                         <li><a class="nav-li-login" href="{{ url('/register') }}">注 册</a></li>
                     @else
+                        <!-- 已登录 -->
                         <li>
                             <a href="{{url('/messages')}}" class="user-notify-bell">
                                 <i class="fa fa-bell"></i>

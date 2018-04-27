@@ -15,7 +15,10 @@ class Question extends Model
         return $this->is_hidden === 'T';
     }
 
-    //帖子---话题
+    /*
+     * 多对多关系，声明关联
+     * 标签 - 问题
+     */
     public function topics()
     {
         return $this->belongsToMany(Topic::class)->withTimestamps();
@@ -45,6 +48,7 @@ class Question extends Model
         return $this->morphMany('App\Comment','commentable');
     }
 
+    // where 条件
     public function scopePublished($query)
     {
         return $query->where('is_hidden','F');
