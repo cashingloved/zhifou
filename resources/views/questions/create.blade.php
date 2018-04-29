@@ -9,45 +9,41 @@
                     <div class="panel-body">
                         <form action="/questions" method="post">
                             {!! csrf_field() !!}
+                            {{--标题--}}
                             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                                 <label for="title">标题</label>
                                 <input type="text" value="{{old('title')}}" name="title" class="form-control"
-                                       placeholser="标题" id="title">
+                                       placeholser="标题" id="title" />
                                 @if ($errors->has('title'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('title') }}</strong>
                                     </span>
                                 @endif
                             </div>
+                            {{--标签--}}
                             <div class="form-group">
                                 <select name="topics[]" class="js-example-placeholder-multiple js-data-example-ajax form-control" multiple="multiple">
-                                    <option value="AL">Alabama</option>
-                                    <option value="WY">Wyoming</option>
                                 </select>
                             </div>
-
+                            {{--描述--}}
                             <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
                                 <label for="body">描述</label>
-
                                 <script id="container" name="body" type="text/plain" style="height:200px;">{!! old('body') !!}</script>
-
                                 @if ($errors->has('body'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('body') }}</strong>
                                     </span>
                                 @endif
                             </div>
-
                             <button type="submit" class="ui button teal pull-right">发布问题</button>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 
-@section('js')
+    @section('js')
     <!-- 实例化编辑器 -->
     <script type="text/javascript">
 
@@ -82,7 +78,7 @@
             $(".js-example-placeholder-multiple").select2({
                 tags: true,
                 placeholder: '选择相关话题',
-                minimumInputLength: 2,
+                minimumInputLength: 1,
                 ajax: {
                     url: '/api/topics',
                     dataType: 'json',
@@ -105,6 +101,6 @@
             });
         })
     </script>
-@endsection
+    @endsection
 @endsection
 

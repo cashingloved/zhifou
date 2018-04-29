@@ -26,7 +26,6 @@ class HomeController extends Controller
     public function index()
     {
         $user = User::find(2);
-        dd(Auth::user());
     }
 
 

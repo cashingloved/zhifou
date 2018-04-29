@@ -11,8 +11,9 @@
 |
 */
 
+
 $app = new Illuminate\Foundation\Application(
-    realpath(__DIR__.'/../')
+    realpath(__DIR__.'/../') // 根目录
 );
 
 /*

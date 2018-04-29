@@ -22,7 +22,6 @@
             {!! csrf_field() !!}
             <div class="nav-tabs-custom">
                 <div class="tab-content">
-
                     <div class="tab-pane active">
                         <div class="form-group">
                             <label>标题
@@ -37,8 +36,6 @@
                             </label>
 
                             <select name="topics[]" class="js-example-placeholder-multiple js-data-example-ajax form-control" multiple="multiple">
-                                <option value="AL">Alabama</option>
-                                <option value="WY">Wyoming</option>
                             </select>
                         </div>
 
@@ -59,9 +56,7 @@
                             <div id="container" name="body" type="text/plain" style="height:200px;">
                                 {!! old('body') !!}
                             </div>
-
                         </div>
-
                     </div>
                     <button type="submit" class="btn btn-primary">发布文章</button>
 
@@ -72,7 +67,7 @@
 @stop
 
 @section('other-js')
-    <script src="//cdn.bootcss.com/select2/4.0.3/js/select2.full.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/select2/4.0.3/js/select2.full.min.js"></script>
     <!-- 配置文件 -->
     <script type="text/javascript" src="{{ asset('vendor/ueditor/ueditor.config.js') }}"></script>
     <!-- 编辑器源码文件 -->
@@ -114,7 +109,7 @@
             $(".js-example-placeholder-multiple").select2({
                 tags: true,
                 placeholder: '选择相关话题',
-                minimumInputLength: 2,
+                minimumInputLength: 1,
                 ajax: {
                     url: '/api/topics',
                     dataType: 'json',

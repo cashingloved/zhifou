@@ -21,20 +21,20 @@ class QuestionsController extends Controller
         $this->questionRepository = $questionRepository;
     }
 
-    //所有问题
+    // 问题首页
     public function index()
     {
         $questions = $this->questionRepository->getQuestionsFeed();
         return view('questions.index', compact('questions'));
     }
 
-    //创建问题页面
+    // 新增问题页面
     public function create()
     {
         return view('questions.create');
     }
 
-    //创建问题
+    // 提交问题数据
     public function store(StoreQuestionRequest $request)
     {
         // 获取问题标签id数组
@@ -50,11 +50,10 @@ class QuestionsController extends Controller
         Auth::user()->increment('questions_count');
         // 新增question与topics关联数据，已在模型中声明关联
         $question->topics()->attach($topics);
-        // 跳转至问题详情页面
         return redirect()->route('questions.show', [$question->id]);
     }
 
-    //显示问题
+    // 问题详情页面
     public function show($id)
     {
         // 获取问题详情、标签和回答
@@ -62,7 +61,7 @@ class QuestionsController extends Controller
         return view('questions.show', compact('question'));
     }
 
-    //修改问题
+    // 修改问题页面
     public function edit($id)
     {
         // 获取问题详情
@@ -73,11 +72,12 @@ class QuestionsController extends Controller
         return back();
     }
 
-    //问题更新
+    // 修改问题数据提交
     public function update(StoreQuestionRequest $request, $id)
     {
         // 获取问题详情
         $question = $this->questionRepository->byId($id);
+        // 更新标签数量
         $topics = $this->questionRepository->normalizeTopics($request->get('topics'));
         $question->update([
             'title' => $request->get('title'),
