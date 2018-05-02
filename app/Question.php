@@ -9,7 +9,7 @@ class Question extends Model
     protected $fillable = ['title', 'body', 'user_id','is_first'];
 
 
-    //设置问题显示
+    // 设置问题显示
     public function isHidden()
     {
         return $this->is_hidden === 'T';
@@ -24,25 +24,36 @@ class Question extends Model
         return $this->belongsToMany(Topic::class)->withTimestamps();
     }
 
-    //帖子---用户
+    /*
+     * 一对多关系，声明关联
+     * 用户 - 问题
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
-    //帖子---答案
+    /*
+     * 一对多关系，声明关联
+     * 问题 - 答案
+     */
     public function answers()
     {
         return $this->hasMany(Answer::class);
     }
 
-    //用户关注问题多对多关系
+    /*
+     * 多对多关系，声明关联
+     * 用户 - 问题
+     */
     public function followers()
     {
         return $this->belongsToMany(User::class,'user_question')->withTimestamps();
     }
 
-    //问题---评论
+    /*
+     * 多态关联
+     * 问题 - 答案
+     */
     public function comments()
     {
         return $this->morphMany('App\Comment','commentable');

@@ -79,12 +79,14 @@ class QuestionsController extends Controller
         $question = $this->questionRepository->byId($id);
         // 更新标签数量
         $topics = $this->questionRepository->normalizeTopics($request->get('topics'));
+        // 更新标题和内容
         $question->update([
             'title' => $request->get('title'),
             'body' => $request->get('body'),
         ]);
-
+        // 更新关联表
         $question->topics()->sync($topics);
+
         return redirect()->route('questions.show', [$question->id]);
     }
 

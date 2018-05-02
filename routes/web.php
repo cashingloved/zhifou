@@ -19,7 +19,11 @@ Route::get('/home', 'HomeController@index');
 
 
 //邮件的验证
-Route::get('/email/verify/{token}',['as'=>'email.verify','uses'=>'EmailController@verify']);
+Route::get('/email/verify/{id}&{token}',['as'=>'email.verify','uses'=>'EmailController@verify']);
+//注册成功后跳转页面
+Route::get('/register/success','EmailController@success');
+//激活失败后跳转页面
+Route::get('/register/error','EmailController@error');
 
 //问题的创建和显示视图
 Route::resource('questions','QuestionsController',['names'=>[

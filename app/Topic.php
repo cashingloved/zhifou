@@ -12,7 +12,7 @@ class Topic extends Model
 
     /*
      * 多对多关系，声明关联
-     * 问题 - 标签
+     * 标签 - 问题
      */
     public function questions()
     {

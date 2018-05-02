@@ -28,5 +28,4 @@ class HomeController extends Controller
         $user = User::find(2);
     }
 
-
 }
